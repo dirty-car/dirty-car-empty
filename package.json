@@ -2,21 +2,37 @@
   "name": "dirty-car-empty",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "npm": "Please use Yarn"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "yarn contentful-typescript-codegen && next dev -p 3001",
+    "build": "yarn contentful-typescript-codegen && next build",
+    "start": "next start -p 3001",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/__generated/contentful.d.ts",
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.17.1",
     "@types/node": "20.4.6",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
+    "contentful": "^10.4.0",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-select": "^5.7.4",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "contentful-management": "^10.39.2",
+    "contentful-typescript-codegen": "^3.4.0",
+    "dotenv": "^16.3.1",
+    "prettier": "^3.0.1",
+    "sass": "^1.64.2",
+    "ts-node": "^10.9.1"
   }
 }
