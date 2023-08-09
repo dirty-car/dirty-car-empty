@@ -1,15 +1,28 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+// import styles from './page.module.css'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { AppProps } from 'next/app';
+import { getPage } from '@/lib/contentful/pages';
+import { IBlock, IPage, IPageFields, ISectionFields } from '@/__generated/contentful';
+import { getSection } from '@/components';
+import { Header } from '@/components/Header';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
+
+
+export default async function Home({ }: AppProps) {
+  const pageFields = await getPage('ru') as IPageFields;
+  const sections = pageFields?.sections;
+  // console.log(sections);
+
+  // const { components } = sections.fields || {} as Array<any>
+  // console.log(components);
+
+
+  return (<>
+    <Header header={pageFields.header} />
+    <main >
+      <div>
+        {/* <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
@@ -25,10 +38,10 @@ export default function Home() {
               priority
             />
           </a>
-        </div>
+        </div> */}
       </div>
-
-      <div className={styles.center}>
+      {sections?.map((section) => getSection(section))}
+      {/* <div className={styles.center}>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -89,7 +102,8 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
-      </div>
+      </div> */}
     </main>
+  </>
   )
 }

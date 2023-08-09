@@ -1,0 +1,25 @@
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+    .select {
+        &-active {
+            border-color: #bafabb;
+            box-shadow: unset;
+
+
+            &:hover {
+                border-color: #bafabb;
+                box-shadow: 0 0 0 1px #bafabb;
+            }
+        }
+    }
+}
