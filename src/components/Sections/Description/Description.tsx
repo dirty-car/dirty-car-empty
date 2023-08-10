@@ -29,7 +29,7 @@ const Description: FC<CommonSection> = ({ blocks }) => {
     return <section className="wrapper">
         <h1 className="h1 text">{blockFields.title}</h1>
         <RichText config={getRichTextConfig()} richText={blockFields.content} />
-        <CustomImage width={300} height={150} media={imageFields.media} isNext />
+        <CustomImage width={600} height={300} media={imageFields.media} isNext />
     </section>
 
 }

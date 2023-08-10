@@ -1,0 +1,60 @@
+.products {
+    margin: 30px auto;
+    max-width: 96%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .description {
+        font-size: 18px;
+        line-height: 1.1;
+        margin: 15px 30px;
+    }
+
+    .cards {
+        display: flex;
+        row-gap: 30px;
+        column-gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        & .card {
+            width: 300px;
+            border: 1px solid rgba(0, 0, 0, .125);
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 19px -4px rgba(34, 60, 80, 0.15);
+
+            &-image {
+                width: 100%;
+                height: auto;
+            }
+
+            &-title {
+                margin: 10px;
+                text-align: center;
+                font-size: 20px;
+            }
+
+            &-description {
+                margin: 0 10px 15px 10px;
+                $font-size: 15;
+                $line-height: 1.1;
+                max-height: #{$font-size * $line-height * 6}px;
+                height: auto;
+                overflow-y: auto;
+
+                .paragraph {
+                    font-size: #{$font-size}px;
+                    line-height: $line-height;
+                }
+            }
+        }
+    }
+
+}
