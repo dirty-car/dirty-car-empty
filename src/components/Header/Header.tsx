@@ -16,7 +16,6 @@ const Header: FC<HeaderInterface> = ({
     header,
 }) => {
     const router = useRouter();
-    const pathname = usePathname();
 
     if (!header?.fields) {
         return null;
@@ -42,9 +41,19 @@ const Header: FC<HeaderInterface> = ({
         <Select
             options={options}
             defaultValue={options.find((option: any) => option.value === localStorage.getItem(LANG_PROP))}
+            theme={(theme) => ({
+                ...theme,
+                colors: {
+                    ...theme.colors,
+                    primary25: '#bafabb',
+                    primary: '#30b982',
+                    neutral10: '#bafabb'
+                },
+            })}
             classNames={{
                 control: (state) =>
                     state.isFocused ? 'select-active' : 'select',
+                option: (state) => state.isFocused ? 'option-active' : 'option'
             }}
             onChange={(option: any) => {
                 const { value } = option;

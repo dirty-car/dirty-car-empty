@@ -15,10 +15,9 @@ export async function generateStaticParams() {
 
 export default function RootLayout({
   children,
-  params,
 }: any) {
   return (
-    <html lang={params.lang}>
+    <html lang="ru">
       <body className={inter.className}>{children}</body>
     </html>
   )
