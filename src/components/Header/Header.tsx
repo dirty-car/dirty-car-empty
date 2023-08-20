@@ -1,10 +1,10 @@
 "use client"
-import { IBlock, IBlockFields, IImageFields, IPage, IPageFields, IText, ITextFields } from "@/__generated/contentful";
+import type { IBlockFields, IImageFields, IPage, IPageFields, IText, ITextFields } from "@/__generated/contentful";
 import { FC } from "react";
 import './Header.scss'
 import CustomImage from "../shared/CustomImage";
 import Select from 'react-select'
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 const LANG_PROP = 'lang';
 
@@ -16,6 +16,9 @@ const Header: FC<HeaderInterface> = ({
     header,
 }) => {
     const router = useRouter();
+    const params = useParams()
+
+    const lang = params[LANG_PROP] || 'ru'
 
     if (!header?.fields) {
         return null;
@@ -40,7 +43,7 @@ const Header: FC<HeaderInterface> = ({
         />
         <Select
             options={options}
-            defaultValue={options.find((option: any) => option.value === localStorage.getItem(LANG_PROP))}
+            defaultValue={options.find((option: any) => option.value === lang)}
             theme={(theme) => ({
                 ...theme,
                 colors: {
@@ -57,7 +60,6 @@ const Header: FC<HeaderInterface> = ({
             }}
             onChange={(option: any) => {
                 const { value } = option;
-                localStorage.setItem(LANG_PROP, value)
 
                 router.replace(value);
             }}
