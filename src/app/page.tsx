@@ -8,10 +8,6 @@ import { Header } from '@/components/Header';
 const Home = async (): Promise<any> => {
   const pageFields = await getPage('ru') as IPageFields;
   const sections = pageFields?.sections;
-  // console.log(sections);
-
-  // const { components } = sections.fields || {} as Array<any>
-  // console.log(components);
 
 
   return (<>
@@ -22,4 +18,5 @@ const Home = async (): Promise<any> => {
   </>
   )
 }
-export default Home;
+
+export default Home as any;
