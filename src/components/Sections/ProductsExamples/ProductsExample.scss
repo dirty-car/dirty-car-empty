@@ -24,7 +24,12 @@
         justify-content: space-around;
 
         & .card {
+            height: auto;
+            max-height: 550px;
             width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             border: 1px solid rgba(0, 0, 0, .125);
             border-radius: 0.25rem;
             box-sizing: border-box;
@@ -33,6 +38,8 @@
             &-image {
                 width: 100%;
                 height: auto;
+                max-height: 300px;
+                object-fit: scale-down;
             }
 
             &-title {
@@ -43,18 +50,45 @@
 
             &-description {
                 margin: 0 10px 15px 10px;
-                $font-size: 15;
+                $font-size: 16;
                 $line-height: 1.1;
-                max-height: #{$font-size * $line-height * 6}px;
-                height: auto;
-                overflow-y: auto;
+                height: 100%;
+                overflow-x: auto;
 
                 .paragraph {
                     font-size: #{$font-size}px;
                     line-height: $line-height;
                 }
+
+                .card-table {
+                    $font-size: 14px;
+                    $td-padding: 5px;
+                    $td-border: 1px;
+                    $rows-allowed: 5;
+                    margin: 10px 0;
+                    width: 100%;
+
+                    .paragraph {
+                        font-size: $font-size;
+                        line-height: $line-height;
+                    }
+
+                    .card-tr {
+                        width: 100%;
+                        padding: 0;
+
+                        .card-td {
+                            padding-bottom: $td-padding;
+                            padding-top: $td-padding;
+                            border-bottom: $td-border solid black;
+
+                            &:last-child {
+                                color: rgb(101, 101, 101);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
-
 }
