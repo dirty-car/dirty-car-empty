@@ -12,6 +12,30 @@ interface HeaderInterface {
     header: IPageFields['header'];
 }
 
+interface LogoInterface {
+    image?: IImageFields;
+}
+
+/* Nested component */
+const Logo: FC<LogoInterface> = ({ image }) => {
+    const imageFile = image?.media?.fields?.file;
+    if (!image?.media?.fields?.file) {
+        return null;
+    }
+
+    const details = (imageFile!.details || {}) as any
+    const height = image.height || details.image?.height || 70;
+    const width = image.width || details?.image?.width || 70;
+
+    return <CustomImage
+        className="logo"
+        media={image.media}
+        width={width}
+        height={height}
+    />
+}
+
+/* Main component */
 const Header: FC<HeaderInterface> = ({
     header,
 }) => {
@@ -35,12 +59,7 @@ const Header: FC<HeaderInterface> = ({
     }, [] as any)
 
     return <header className="header">
-        <CustomImage
-            className="logo"
-            media={imageFields?.media}
-            width={70}
-            height={70}
-        />
+        <Logo image={imageFields} />
         <Select
             options={options}
             defaultValue={options.find((option: any) => option.value === lang)}
