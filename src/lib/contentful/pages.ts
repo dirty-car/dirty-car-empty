@@ -2,6 +2,8 @@ import { cache } from 'react'
 import { client } from '@/lib/contentful';
 import { IPage } from '@/__generated/contentful';
 
+export const revalidate = 3600;
+
 export const getPage = cache(async (locale: 'zh' | 'ru' = 'ru') => {
     try {
         const resp = await client.getEntries({ content_type: 'page', limit: 1, 'fields.slug': '/', include: 10, locale });
