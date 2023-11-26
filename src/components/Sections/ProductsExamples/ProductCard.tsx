@@ -33,10 +33,6 @@ const ProductCard: FC<IProductCard> = ({ card }) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const [descriptionStyles, setDescriptionStyles] = useState<CSSProperties>({});
 
-    if (!card?.fields) {
-        return null;
-    }
-
     useEffect(() => {
         const wrapper = cardRef.current;
 
@@ -48,7 +44,12 @@ const ProductCard: FC<IProductCard> = ({ card }) => {
         const title = wrapper.querySelector('.card-title');
         const maxDescriptionHeight = wrapper.clientHeight - getElementHeight(image) - getElementHeight(title);
         setDescriptionStyles({ maxHeight: `${maxDescriptionHeight}px` })
-    }, [cardRef])
+    }, [cardRef]);
+
+
+    if (!card?.fields) {
+        return null;
+    }
 
     const cardFields = card.fields as ICardFields;
 
