@@ -4,8 +4,6 @@ import { getSection } from '@/components';
 import { Header } from '@/components/Header';
 import getContentfulPage from './actions';
 
-
-
 const Home = async (): Promise<any> => {
   const pageFields = await getContentfulPage() as IPageFields;
   const sections = pageFields?.sections;
