@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 # generated
-src/__generated
+src/__generated/
+src/__generated/contentful.d.ts
