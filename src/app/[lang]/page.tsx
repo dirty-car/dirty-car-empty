@@ -1,12 +1,10 @@
 import { IPageFields } from '@/__generated/contentful';
 import { getSection } from '@/components';
 import { Header } from '@/components/Header';
-import getContentfulPage from '../actions';
-
-export const dynamic = 'auto'
+import { getPage } from '@/lib/contentful/pages';
 
 export default async function Home({ params }: any) {
-  const pageFields = await getContentfulPage(params.lang) as IPageFields;
+  const pageFields = await getPage(params.lang) as IPageFields;
   const sections = pageFields?.sections;
 
   return (<>
