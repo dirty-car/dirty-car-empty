@@ -3,6 +3,8 @@ import { getSection } from '@/components';
 import { Header } from '@/components/Header';
 import { getPage } from '@/lib/contentful/pages';
 
+export const dynamic = 'auto'
+
 export default async function Home({ params }: any) {
   const pageFields = await getPage(params.lang) as IPageFields;
   const sections = pageFields?.sections;

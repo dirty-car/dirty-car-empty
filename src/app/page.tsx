@@ -3,6 +3,8 @@ import type { IPageFields } from '@/__generated/contentful';
 import { getSection } from '@/components';
 import { Header } from '@/components/Header';
 
+export const dynamic = 'auto'
+
 const Home = async (): Promise<any> => {
   const pageFields = await getPage() as IPageFields;
   const sections = pageFields?.sections;
